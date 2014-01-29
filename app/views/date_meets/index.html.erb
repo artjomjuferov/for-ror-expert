@@ -1,0 +1,3 @@
+<% @designers.each  do |designer|  %>
+  <%= link_to designer.name,  :controller => "date_meets", :action => "new", :designer => designer.id %>
+<% end %>

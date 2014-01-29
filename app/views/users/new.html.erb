@@ -1,0 +1,14 @@
+<%= form_for @user do |f| %>
+  Designer : 
+  <%= f.collection_select :designer_id, @designers, :id, :name, include_blank: true %>
+  Time : <%= f.text_field :time %>
+  Place : <%= f.text_field :place %>
+  Surname : <%= f.text_field :surname %>
+  Name : <%= f.text_field :name %>
+  DadName : <%= f.text_field :dad_name %>
+  Phone : <%= f.text_field :phone %>
+  Email : <%= f.text_field :email %>
+  <%= f.submit %>
+<% end %>
+
+

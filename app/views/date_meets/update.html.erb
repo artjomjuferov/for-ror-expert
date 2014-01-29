@@ -1,0 +1,4 @@
+<%= form_for @designer, :url => designers_path(@designer) do |f| %>
+  Designer : <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>

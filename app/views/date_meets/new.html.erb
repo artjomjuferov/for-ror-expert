@@ -1,0 +1,24 @@
+<%= form_for @date_meet, :url => date_meets_path(@date_meet) do |f| %>
+  
+  <%= f.hidden_field :designer_id, :input_html => { :value => @date_meet.designer.id }%>
+  <%= @date_meet.designer.name %>
+  
+  <%= f.label :date %>
+  <%= f.text_field :date %>
+  
+  <% (1..24).each do |timeNo| %>
+    <%= f.label :"time_#{timeNo}" %>
+    <%= f.check_box :"time_#{timeNo}" %>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
+
+
+<%- flash.each do |key, msg| -%>
+  <div id="<%= key %>">
+    <p style="float:right;"><%= link_to_function 'X', "Effect.Fade('#{key}')" %></p>
+    <p><%= msg %></p>
+    <div class="clear"></div>
+  </div>
+<%- end -%>

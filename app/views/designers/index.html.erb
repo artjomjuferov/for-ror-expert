@@ -1,0 +1,3 @@
+<% @designers.each  do |designer|  %>
+  <%= link_to designer.name, edit_designer_path(:id => designer.id) %>
+<% end %>
