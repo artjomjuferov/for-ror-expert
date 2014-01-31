@@ -11,36 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140130202028) do
+ActiveRecord::Schema.define(:version => 20140131122633) do
 
   create_table "date_meets", :force => true do |t|
     t.datetime "date"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.boolean  ":time_1"
-    t.boolean  ":time_2"
-    t.boolean  ":time_3"
-    t.boolean  ":time_4"
-    t.boolean  ":time_5"
-    t.boolean  ":time_6"
-    t.boolean  ":time_7"
-    t.boolean  ":time_8"
-    t.boolean  ":time_9"
-    t.boolean  ":time_10"
-    t.boolean  ":time_11"
-    t.boolean  ":time_12"
-    t.boolean  ":time_13"
-    t.boolean  ":time_14"
-    t.boolean  ":time_15"
-    t.boolean  ":time_16"
-    t.boolean  ":time_17"
-    t.boolean  ":time_18"
-    t.boolean  ":time_19"
-    t.boolean  ":time_20"
-    t.boolean  ":time_21"
-    t.boolean  ":time_22"
-    t.boolean  ":time_23"
-    t.boolean  ":time_24"
     t.boolean  "time_1"
     t.boolean  "time_2"
     t.boolean  "time_3"
@@ -85,7 +61,6 @@ ActiveRecord::Schema.define(:version => 20140130202028) do
 
   create_table "users", :force => true do |t|
     t.integer  "designer_id"
-    t.datetime "time"
     t.string   "place"
     t.string   "surname"
     t.string   "name"
@@ -95,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20140130202028) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.date     "date"
+    t.integer  "time"
   end
 
 end

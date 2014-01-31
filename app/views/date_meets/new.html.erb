@@ -5,11 +5,12 @@
 
 <%= form_for @date_meet, :url => date_meets_path(@date_meet) do |f| %>
   
-  <%= f.hidden_field :designer_id, :value => @date_meet.designer.id %>
+  <%= f.hidden_field :designer_id,  :value => @date_meet.designer.id %>
   <%= @date_meet.designer.name %>
   
   <%= f.label :date %>
-  <%= f.text_field :date %>
+  <%= text_field "datepicker","id", :value => "" %>
+  <%= f.hidden_field :date, :value => 'ad' %>
   
   <% (8..22).each do |timeNo| %>
     <%= f.label :"time_#{timeNo}" %>

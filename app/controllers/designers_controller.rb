@@ -14,5 +14,15 @@ class DesignersController < ApplicationController
     end
   end
 
+  def destroy
+    if Designer.find(params[:id]).destroy
+      flash[:notice] = "successfully deleted "
+      redirect_to(:action => "index")
+    else
+      flash[:notice] = "unsuccessfully deleted "
+      redirect_to(:action => "index")
+    end
+  end
+
 
 end

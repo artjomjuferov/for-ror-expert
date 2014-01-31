@@ -1,11 +1,13 @@
 $(function() {
-  $('#date_meet_date').datepicker({
+  $('#datepicker_id').datepicker({
     onSelect: function(dateText, inst) {
+      arr = dateText.split('/');
+      dateText1 = arr[2] + "-" + arr[0] + "-" + arr[1];
+      s = $('#date_meet_date').val(dateText1);
+      alert(inst+' '+dateText+' '+s);
      $.each( js_dates, function( key, value ) {
         date = value["date"].split('T')[0];
-        arr = date.split('-')
-        dateLast = arr[2] + "/" + arr[1] + "/" + arr[0]
-        if(dateText == dateLast && value['designer_id'] == designer_id){
+        if(dateText1 == date && value['designer_id'] == designer_id){
           //alert(value['designer_id'] +' : '+ designer_id)
           //tmp = $('#date_meet_time_8').is(':checked');
           $('#date_meet_time_8').prop("checked", value['time_8']);

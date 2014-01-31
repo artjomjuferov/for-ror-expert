@@ -1,25 +1,31 @@
 <%= javascript_tag do %>
   var js_dates = <%= raw @date_meets.to_json %>;
   var date_now = "<%= Date.today %>";
+  var date_next = "<%= Date.today.next_day %>";
 <% end %>
 
-
-<%= form_for @user, :url => date_meets_path(@user) do |f| %>
+<%= form_for @user, :url => users_path(@user) do |f| %>
   Designer : 
   <%= f.collection_select :designer_id, @designers, :id, :name, include_blank: true %>
   <%= f.hidden_field :date, :value => "" %>
+  <% i = 0 %>
+  <div>
   <% @date_meets.each do |el| %>
-    <div>
+    <% if el.date.to_date == Date.today.to_date %>
+      <% i+=1 %>
+      <%= i %>
       <%= el.date.to_date %>
-      <% if el.date.to_date == Date.today.to_date %>
       <div id="date_time_1">
       </div>
-      <% else %>
+    <% else %>
+    <% i+=1 %>
+      <%= i %>
+      <%= el.date.to_date %>
       <div id="date_time_2">
       </div>
-      <% end %>
-    </div>
+    <% end %>
   <% end %>
+  </div>
   Place : <%= f.text_field :place %>
   Surname : <%= f.text_field :surname %>
   Name : <%= f.text_field :name %>
@@ -29,9 +35,7 @@
   <%= f.submit %>
 <% end %>
 
-<% @date_meets.each do |el| %>
-  <%= el.date %>
-<% end %>
+<%= Date.today %>
 
 <% flash.each do |key, msg| %>
   <div id="<%= key %>">

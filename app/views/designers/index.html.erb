@@ -1,3 +1,15 @@
 <% @designers.each  do |designer|  %>
-  <%= link_to designer.name, edit_designer_path(:id => designer.id) %>
+  <div>
+    <%= link_to designer.name, edit_designer_path(:id => designer.id) %>
+    destroy <%= link_to "Delete", designer_path(designer), :confirm => "Are you sure?", :method=>:delete %>
+  </div>
+<% end %>
+
+
+<% flash.each do |key, msg| %>
+  <div id="<%= key %>">
+    <p style="float:right;"><%= link_to_function 'X', "Effect.Fade('#{key}')" %></p>
+    <p><%= msg %></p>
+    <div class="clear"></div>
+  </div>
 <% end %>

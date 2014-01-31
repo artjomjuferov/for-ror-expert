@@ -10,13 +10,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = DateMeet.new(params[:date_meet])
-    if @date_meet.save
+    @user = User.new(params[:user])
+    if @user.save
       flash[:notice] = "successfully created "
-      redirect_to(:action => 'new')
+      redirect_to(:action => 'index')
     else 
       flash[:notice] = "wasn't successfully created"
-      redirect_to(:action => 'new')
+      redirect_to(:action => 'index')
     end
   end
 end
