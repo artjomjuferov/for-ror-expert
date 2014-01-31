@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140129152448) do
+ActiveRecord::Schema.define(:version => 20140130202028) do
 
   create_table "date_meets", :force => true do |t|
     t.datetime "date"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20140129152448) do
     t.string   "email"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.date     "date"
   end
 
 end

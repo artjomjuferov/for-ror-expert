@@ -1,7 +1,25 @@
-<%= form_for @user do |f| %>
+<%= javascript_tag do %>
+  var js_dates = <%= raw @date_meets.to_json %>;
+  var date_now = "<%= Date.today %>";
+<% end %>
+
+
+<%= form_for @user, :url => date_meets_path(@user) do |f| %>
   Designer : 
   <%= f.collection_select :designer_id, @designers, :id, :name, include_blank: true %>
-  Time : <%= f.text_field :time %>
+  <%= f.hidden_field :date, :value => "" %>
+  <% @date_meets.each do |el| %>
+    <div>
+      <%= el.date.to_date %>
+      <% if el.date.to_date == Date.today.to_date %>
+      <div id="date_time_1">
+      </div>
+      <% else %>
+      <div id="date_time_2">
+      </div>
+      <% end %>
+    </div>
+  <% end %>
   Place : <%= f.text_field :place %>
   Surname : <%= f.text_field :surname %>
   Name : <%= f.text_field :name %>
@@ -11,4 +29,15 @@
   <%= f.submit %>
 <% end %>
 
+<% @date_meets.each do |el| %>
+  <%= el.date %>
+<% end %>
+
+<% flash.each do |key, msg| %>
+  <div id="<%= key %>">
+    <p style="float:right;"><%= link_to_function 'X', "Effect.Fade('#{key}')" %></p>
+    <p><%= msg %></p>
+    <div class="clear"></div>
+  </div>
+<% end %>
 

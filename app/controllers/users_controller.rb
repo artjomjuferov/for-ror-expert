@@ -2,10 +2,21 @@ class UsersController < ApplicationController
   def new 
     @user = User.new
     @designers = Designer.all
-    @dateMeets = DateMeet.where("date >= ?",Date.today).where("date <= ?", Date.today+3.days).all
+    @date_meets = DateMeet.where("date >= ?",Date.today).where("date < ?", (Date.today+2.days)).all
   end
 
   def index
     @users = User.all
+  end
+
+  def create
+    @user = DateMeet.new(params[:date_meet])
+    if @date_meet.save
+      flash[:notice] = "successfully created "
+      redirect_to(:action => 'new')
+    else 
+      flash[:notice] = "wasn't successfully created"
+      redirect_to(:action => 'new')
+    end
   end
 end
